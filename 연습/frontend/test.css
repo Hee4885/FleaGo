@@ -1,0 +1,10 @@
+body{
+    display: flex;
+    gap: 10px;
+}
+
+.box{
+    width: 140px;
+    height: 30px;
+    font-size: 1rem;
+}
