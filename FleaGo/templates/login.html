@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+
+<body>
+    <header></header>
+    <section id="login">
+        <div class="LoginInput-box">
+            <a href="/"><img id="login-logo" src="../static/img/home/Logo2.png" alt="로고"></a>
+
+            <p id="guide-line">행복한 시작은 지금 부터, <br> 로그인하고 <strong>플리고</strong>와 함께해요!</p>
+
+            <!-- 로그인 폼 -->
+            <form id="loginForm" action="/login" method="POST">
+                <p id="id-text">아이디를 입력하세요.</p>
+                <input id="id-input" name="userId" type="text" placeholder="아이디 입력" required>
+
+                <p id="password-text">비밀번호를 입력하세요.</p>
+                <input id="password-input" name="password" type="password" placeholder="비밀번호 입력" required>
+
+                <button type="submit" id="btnLogin">로그인</button>
+                <a href="/signUp" id="linkSignUp">아직 계정이 없으신가요?</a>
+            </form>
+        </div>
+    </section>
+
+    <!-- Flash 메시지 처리 -->
+    <script>
+        const messages = {{ get_flashed_messages() | tojson }};
+        messages.forEach(msg => alert(msg));
+    </script>
+
+</body>
+
+</html>

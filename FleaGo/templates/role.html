@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>권한 선택</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/role.css') }}">
+
+</head>
+<body>
+    <h1 id="welcome-text">환영합니다!</h1>
+    <h3>FleaGo에 오신 것을 환영합니다!</h3>
+    <p>참가자와 관리자로 다양한 행사에 참여하세요!</p>
+
+    <form id="roleForm" action="/role" method="POST">
+        <!-- 로그인 시 session에서 전달된 user_id 사용 -->
+        <input type="hidden" name="userId" id="userIdInput">
+
+        <button type="submit" name="role" value="admin">관리자</button>
+        <button type="submit" name="role" value="user">참가자</button>
+    </form>
+
+    <script>
+        const userId = "{{ user_id }}";  // Flask에서 전달
+        if(userId){
+            localStorage.setItem("userName", userId);
+            console.log("로컬스토리지 저장 완료:", userId);
+        }
+        document.getElementById("welcome-text").textContent = `${userId}님!`;
+        document.getElementById("userIdInput").value = userId;
+    </script>
+
+</body>
+</html>

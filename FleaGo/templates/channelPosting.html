@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/channelPosting.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>채널 개설</title>
+</head>
+
+<body id="channelPosting-body">
+    <section id="channelPosting-section">
+        <div id="channelPosting-container">
+            <h1 id="channelPosting-title">채널 개설하기</h1>
+            <h3 id="channelSuccess-text1"><strong>1) 채널 개설</strong></h3>
+            <h3 id="channelSuccess-text2">2) 완료</h3>
+
+            <form id="channelPosting-form" action="/channel" method="POST" enctype="multipart/form-data">
+                <!-- 관리자 ID를 hidden으로 보내기 -->
+                <input type="hidden" name="admin_id" id="adminIdInput">
+
+                <label for="channelName" id="label-channelName">채널 이름</label>
+                <input type="text" id="channelName" name="channelName" placeholder="행사 이름 입력" required>
+
+                <label for="channelProfile" id="label-channelProfile">채널 프로필 이미지</label>
+                <input type="file" id="channelProfile" name="channelProfile" accept="image/*" required>
+
+                <button type="submit" id="channelPosting-submitBtn">채널 생성하기</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Flash 메시지 처리 -->
+    <script>
+        const messages = {{ get_flashed_messages() | tojson }};
+        messages.forEach(msg => alert(msg));
+    </script>
+
+    <!-- localStorage에서 관리자 아이디 가져와 hidden input 채우기 -->
+    <script>
+        const adminId = localStorage.getItem("userId"); // role.html에서 저장된 userId 사용
+        document.getElementById("adminIdInput").value = adminId;
+    </script>
+</body>
+</html>

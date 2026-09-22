@@ -1,0 +1,113 @@
+/* 기본 스타일 */
+body {
+    margin: 0;
+    padding: 20px;
+    background: #f6f7fb;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+
+/* 페이지 제목 */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* 폼 전체 */
+form {
+    width: 420px;
+    margin: 0 auto;
+    padding: 25px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+}
+
+/* label */
+form label {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* input */
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+form input:focus {
+    border-color: #6d8bff;
+    outline: none;
+}
+
+/* 버튼 2개 */
+form button[type="submit"],
+form button[type="button"] {
+    margin-top: 18px;
+    padding: 12px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* 부스 추가 버튼 */
+form button[type="submit"] {
+    background: #6d8bff;
+    color: white;
+}
+
+form button[type="submit"]:hover {
+    background: #5a76e0;
+}
+
+/* 행사 게시 버튼 */
+form button[type="button"] {
+    background: #ff7676;
+    color: white;
+}
+
+form button[type="button"]:hover {
+    background: #e65f5f;
+}
+
+/* a 태그의 파란 밑줄 제거 */
+form a {
+    text-decoration: none;
+}
+
+/* 부스 목록 제목 */
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    font-weight: 600;
+}
+
+/* 부스 카드 스타일 */
+.booth-card {
+    width: 420px;
+    margin: 10px auto;
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.booth-card p {
+    margin: 6px 0;
+}
+
+.booth-card strong {
+    color: #555;
+}

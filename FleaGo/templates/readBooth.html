@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부스 정보</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/readBooth.css') }}">
+</head>
+<body>
+    <h1>행사: {{ event.title }}</h1>
+    <h2>부스 목록</h2>
+
+    {% if booths %}
+        {% for booth in booths %}
+            <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+                <p><strong>부스명:</strong> {{ booth.name }}</p>
+                <p><strong>위치:</strong> {{ booth.location }}</p>
+                <p><strong>운영 시간:</strong> {{ booth.open_time }} ~ {{ booth.close_time }}</p>
+                <p><strong>대표 상품명:</strong> {{ booth.product_name }}</p>
+                <p><strong>상품 용도:</strong> {{ booth.use_type }}</p>
+                <p><strong>가격:</strong> {{ booth.price }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>등록된 부스가 없습니다.</p>
+    {% endif %}
+
+    <a href="{{ url_for('board.read_event', event_id=event.event_id) }}">이벤트 상세로 돌아가기</a>
+    <br>
+    <a href="{{ url_for('board.event_board') }}">목록으로 돌아가기</a>
+</body>
+</html>

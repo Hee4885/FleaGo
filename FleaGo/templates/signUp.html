@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/signUp.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body>
+    <section id="login">
+        <div class="SignUpInput-box">
+            <a href="/"><img id="login-logo" src="../static/img/home/Logo2.png" alt="로고"></a>
+            <p id="guide-line"><strong>플리고</strong>와 첫 걸음, <br> 진심으로 환영합니다!</p>
+
+            <!-- 회원가입 폼 -->
+            <form id="signUpForm" action="/signUp" method="POST">
+                <p id="id-text">아이디를 입력하세요.</p>
+                <input id="id-input" name="userId" type="text" placeholder="아이디 입력" required>
+
+                <p id="password-text">비밀번호를 입력하세요.</p>
+                <input id="password-input" name="password" type="password" placeholder="비밀번호 입력" required>
+
+                <p id="RePassword-text">*비밀번호를 확인하세요.</p>
+                <input id="password-Reinput" name="rePassword" type="password" placeholder="비밀번호 재입력" required>
+
+                <p id="email-text">이메일을 입력하세요.</p>
+                <input id="email-input" name="email" type="email" placeholder="email@example.com" required>
+
+                <button type="submit" id="btnSignUp">회원가입</button>
+            </form>
+
+            <button id="password-btnCheck">비밀번호 확인</button>
+            <a href="/login" id="linkSignUp">이미 계정이 있으신가요?</a>
+        </div>
+    </section>
+
+    <!-- Flash 메시지 처리 -->
+    <script>
+        const messages = {{ get_flashed_messages() | tojson }};
+        messages.forEach(msg => alert(msg));
+    </script>
+
+    <script>
+        // 비밀번호 확인 버튼
+        const passwordCheckBtn = document.getElementById('password-btnCheck');
+        const passwordInput = document.getElementById('password-input');
+        const rePasswordInput = document.getElementById('password-Reinput');
+
+        passwordCheckBtn.addEventListener('click', () => {
+            if (passwordInput.value === rePasswordInput.value) {
+                alert('비밀번호가 일치합니다!');
+            } else {
+                alert('비밀번호가 일치하지 않습니다!');
+            }
+        });
+    </script>
+</body>
+</html>

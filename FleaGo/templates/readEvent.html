@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 상세보기</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/readEvent.css') }}">
+</head>
+<body id="eventInfo-body">
+    <section id="eventInfo-section">
+        <div id="eventInfo-container">
+            <h1>{{ event.title }}</h1>
+
+            <p><strong>행사 설명:</strong> {{ event.intro }}</p>
+            <p><strong>공지/안내:</strong> {{ event.notice }}</p>
+            <p><strong>주요 행사:</strong> {{ event.main_event }}</p>
+
+            <h3>담당자 정보</h3>
+            <p><strong>이름:</strong> {{ manager.name }}</p>
+            <p><strong>이메일:</strong> {{ manager.email }}</p>
+            <p><strong>전화번호:</strong> {{ manager.phone }}</p>
+
+            <h3>행사 일시</h3>
+            <p><strong>시작:</strong> {{ event.start_date }} {{ event.start_time }}</p>
+            <p><strong>종료:</strong> {{ event.end_date }} {{ event.end_time }}</p>
+
+            <!-- 부스 보기 버튼 -->
+            <a href="{{ url_for('board.read_booth', event_id=event.event_id) }}">
+                <button type="button">부스 보기</button>
+            </a>
+
+            <br><br>
+            <a href="{{ url_for('board.event_board') }}">목록으로 돌아가기</a>
+        </div>
+    </section>
+</body>
+</html>

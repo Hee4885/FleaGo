@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행사 정보 입력</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/eventInfo.css') }}"></head>
+</head>
+<body id="eventInfo-body">
+    <section id="eventInfo-section">
+        <div id="eventInfo-container">
+            <h1>행사 정보 입력</h1>
+            <form action="{{ url_for('event.post_event') }}" method="POST">
+                <label for="eventTitle">행사 제목</label>
+                <input type="text" name="eventTitle" id="eventTitle" 
+                       value="{{ event.title if event else '' }}" required>
+
+                <label for="eventDesc">행사 설명</label>
+                <textarea name="eventDesc" id="eventDesc" required>{{ event.intro if event else '' }}</textarea>
+
+                <label for="notice">공지/안내글</label>
+                <textarea name="notice" id="notice">{{ event.notice if event else '' }}</textarea>
+
+                <h3>담당자 정보</h3>
+                <label for="managerName">이름</label>
+                <input type="text" name="managerName" id="managerName"
+                       value="{{ manager.name if manager else '' }}" required>
+
+                <label for="managerEmail">이메일</label>
+                <input type="email" name="managerEmail" id="managerEmail"
+                       value="{{ manager.email if manager else '' }}" required>
+
+                <label for="managerPhone">전화번호</label>
+                <input type="tel" name="managerPhone" id="managerPhone"
+                       value="{{ manager.phone if manager else '' }}" required>
+
+                <h3>행사 일시</h3>
+                <label for="startDate">시작 날짜</label>
+                <input type="date" name="startDate" id="startDate"
+                       value="{{ event.start_date if event else '' }}" required>
+
+                <label for="startTime">시작 시간</label>
+                <input type="time" name="startTime" id="startTime"
+                       value="{{ event.start_time if event else '' }}" required>
+
+                <label for="endDate">종료 날짜</label>
+                <input type="date" name="endDate" id="endDate"
+                       value="{{ event.end_date if event else '' }}" required>
+
+                <label for="endTime">종료 시간</label>
+                <input type="time" name="endTime" id="endTime"
+                       value="{{ event.end_time if event else '' }}" required>
+
+                <label for="mainEvent">주요 행사</label>
+                <input type="text" name="mainEvent" id="mainEvent"
+                       value="{{ event.main_event if event else '' }}">
+
+                <button type="submit">다음: 부스 입력</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

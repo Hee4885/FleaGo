@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부스 정보 입력</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/boothInfo.css') }}">
+</head>
+<body>
+    <h1>부스 정보 입력</h1>
+
+    <!-- 주의: action이 blueprint 라우트 '/post/<event_id>'와 정확히 일치해야 함 -->
+    <form action="{{ url_for('booth.post_booth', event_id=event_id) }}" method="POST">
+        <input type="hidden" name="event_id" value="{{ event_id }}">
+
+        <label for="boothName">부스명</label>
+        <input type="text" name="boothName" id="boothName" required>
+
+        <label for="location">부스 위치</label>
+        <input type="text" name="location" id="boothLocation" required>
+
+        <label for="openTime">운영 시간 (시작)</label>
+        <input type="time" name="openTime" id="openTime">
+
+        <label for="closeTime">운영 시간 (종료)</label>
+        <input type="time" name="closeTime" id="closeTime">
+
+        <label for="productName">대표 상품명</label>
+        <input type="text" name="productName" id="productName" required>
+
+        <label for="useType">상품 용도</label>
+        <input type="text" name="useType" id="productUse">
+
+        <label for="price">가격</label>
+        <input type="number" name="price" id="productPrice" min="0">
+
+        <button type="submit">부스 추가</button>
+        <!-- 행사 게시로 이동(보드 페이지) -->
+        <a href="{{ url_for('board.event_board') }}"><button type="button">행사 게시</button></a>
+    </form>
+
+    <h2>부스 목록</h2>
+    {% if booths %}
+        {% for booth in booths %}
+            <div style="border:1px solid #ccc; padding:8px; margin-bottom:8px;">
+                <p><strong>부스명:</strong> {{ booth.name }}</p>
+                <p><strong>위치:</strong> {{ booth.location }}</p>
+                <p><strong>운영 시간:</strong>
+                    {{ booth.open_time if booth.open_time else 'None' }} ~ {{ booth.close_time if booth.close_time else 'None' }}
+                </p>
+                <p><strong>대표 상품:</strong> {{ booth.product_name if booth.product_name else 'None' }}</p>
+                <p><strong>상품 용도:</strong> {{ booth.use_type if booth.use_type else 'None' }}</p>
+                <p><strong>가격:</strong> {{ booth.price if booth.price is not none else 'None' }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>등록된 부스가 없습니다.</p>
+    {% endif %}
+</body>
+</html>

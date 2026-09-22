@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <title>home</title>
+</head>
+
+<body>
+    <header id="header">
+        <a href="#home">
+            <img id="mainLogo" src="../static/img/home/Logo.png" alt="로고">
+        </a>
+
+        <nav>
+            <a href="#home">home</a>
+            <a href="#explain">explain</a>
+            <a href="/login">Login</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div id="background_home">
+            <div class="neumorphism-box"><img src="../static/img/home/neumorphism-box.png" alt="뉴모니즘 박스"></div>
+            <div class="home-img">
+                <img src="../static/img/home/home-img.png" alt="홈 이미지">
+                <img src="../static/img/home/home-film.png" alt="홈 이미지 필름">
+            </div>
+            <div class="home-effect">
+                <img id="effect1" src="../static/img/home/home-effect.png" alt="별1">
+                <img id="effect2" src="../static/img/home/home-effect.png" alt="별2">
+                <img id="effect3" src="../static/img/home/home-effect.png" alt="별3">
+                <img id="effect4" src="../static/img/home/home-effect.png" alt="별4">
+                <img id="effect5" src="../static/img/home/home-effect.png" alt="별5">
+            </div>
+            <div id="home-texts">
+                <p id="text1">FleaGo</p>
+                <p id="text2">작은 즐거움이 모이는 곳</p>
+                <p id="text3">하루가 특별해지는 순간<br>플리고에서 시작됩니다.</p>
+            </div>
+        </div>
+    </section>
+    <section id="explain">
+        <div class="background_explain">
+            <h1>OUR PROS</h1>
+
+            <img id="explain1" src="../static/img/home/explain-effect.png" alt="설명란1">
+            <img id="explain2" src="../static/img/home/explain-effect.png" alt="설명란2">
+            <img id="explain3" src="../static/img/home/explain-effect.png" alt="설명란3">
+            
+            <p id="explain-text1">간결한 행사 정보 제공</p>
+            <p id="explain-text2">적극적인 행사 홍보</p>
+            <p id="explain-text3">행사 참여도 향상</p>
+
+
+            <div class="explain-imgs">
+                <img id="explain-img1" src="../static/img/home/explain-img1.png" alt="설명 이미지2">
+                <img id="explain-img2" src="../static/img/home/explain-img2.png" alt="설명 이미지1">
+                <img id ="explain-img3" src="../static/img/home/explain-img3.png" alt="설명 이미지2">
+            </div>
+        </div>
+    </section>
+
+    <!-- <footer id="footer">
+        <div class="background_footer">
+            <p>dkdkdkdk</p>
+        </div>
+    </footer> -->
+
+    <script>
+        const navLogo = document.getElementById('mainLogo'); //nav img 요소 가져오기
+        const section_explain = document.getElementById('explain'); //explain section 요소 가져오기 -> section 위치와 스크롤 위치 비교를 위해
+
+        //스크롤 이벤트 발생 시 함수를 실행하도록 함 -> scroll 함수 실행
+        window.addEventListener('scroll', () => {
+            const section_explainTop = section_explain.offsetTop; //section_explain가 현재 페이지에 상단에서 부터 떨어져 있는 위치 값(Y좌표)
+            const section_explainBottom = section_explainTop + section_explain.offsetHeight; //section_explain가 현재 페이지에 하단에서 부터 떨어져 있는 위치 값()
+            const scrollY = window.scrollY + window.innerHeight / 2;
+            /* window.scrolly는 브라우저 화면의 맨 위가 문서 맨위에서 얼마나 떨어져 있는지(스크롤 한 값) 
+             + window.innerHeight는 브라우저 화면 높이/2(화면크기에 절반)*/
+
+            //현재 화면 중앙 위치가 section_explain 영역에 있는지 체크
+            //하단 위치가 현재 위치보다 더 아래 있는지 체크
+            if (scrollY >= section_explainTop && scrollY < section_explainBottom) {
+                navLogo.src = '../static/img/home/Logo_explain.png' // explain 영약에 도달하면 이미지 변경
+            } else {
+                navLogo.src = "../static/img/home/Logo.png" //그게 아니면 다시 원래 이미지
+            }
+        });
+    </script>
+</body>
+
+</html>

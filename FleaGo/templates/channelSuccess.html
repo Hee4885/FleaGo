@@ -1,0 +1,44 @@
+<!DOCTYPE html> <!-- HTML 문서 선언 -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 문자 인코딩 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 반응형 -->
+    <title>채널 개설 완료</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/channelSuccess.css') }}"></head>
+
+<body id="channelSuccess-body">
+
+    <section id="channelSuccess-section">
+
+        <div id="channelSuccess-container">
+
+            <h1 id="channelSuccess-title">채널 개설</h1>
+
+            <h3 id="channelSuccess-text1">1) 채널 개설</h3>
+            <h3 id="channelSuccess-text2"><strong>2) 완료</strong></h3>
+
+            <h2 id="channelSuccess-text3">채널 개설 완료!</h2>
+
+            <p id="channelSuccess-text4">행사 정보를 입력하고 게시하세요.</p>
+
+            <!-- 시작 버튼 -->
+            <button id="channelSuccess-btn"
+                    class="success-btn"
+                    onclick="window.location.href='{{ url_for('event.event_info_page') }}'">
+                시작하기
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Flash 메시지 -->
+    <script>
+        const messages = {{ get_flashed_messages() | tojson }};
+        messages.forEach(msg => alert(msg));
+    </script>
+
+</body>
+
+</html>
