@@ -1,10 +1,14 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 from flask import Flask, render_template
 from routes import auth, event, booth, board, channel # 각 기능 모듈 import
 
 app = Flask(__name__)
 
 # 세션/flash 사용을 위한 secret key 설정
-app.secret_key = "a_very_secret_key_123!" 
+app.secret_key = os.environ["SECRET_KEY"]  # 비밀값은 .env에서 불러옴
 
 # 기본 페이지
 @app.route("/")

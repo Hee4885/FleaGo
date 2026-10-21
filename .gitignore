@@ -1,0 +1,13 @@
+# 가상환경 · 캐시
+.venv/
+venv/
+FleaGo/venv/
+FleaGo/Lib/
+FleaGo/Scripts/
+FleaGo/Include/
+pyvenv.cfg
+__pycache__/
+*.pyc
+
+# 비밀값
+.env
